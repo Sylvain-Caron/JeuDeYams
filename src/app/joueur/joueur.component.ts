@@ -12,6 +12,7 @@ export class JoueurComponent implements OnInit {
   @Input() nom !: string;
 
   ngOnInit(): void {
+    
   }
 
 }

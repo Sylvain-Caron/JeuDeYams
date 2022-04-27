@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DiceService } from '../dice.service';
 import { Dice } from './dice';
 
 @Component({
@@ -8,7 +9,7 @@ import { Dice } from './dice';
 })
 export class DiceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private diceS : DiceService) { }
 
   //Création de 6 dés
 
@@ -20,18 +21,15 @@ export class DiceComponent implements OnInit {
 
   allDice = [this.D1,this.D2,this.D3,this.D4,this.D5]
 
-  garde(dice : Dice) {
-    console.log("Je garde")
-    dice.lock = true;
-  }
-
-  relance() {
-    for (var dice of this.allDice) {
-      console.log(dice);
-    }
-  }
-
   ngOnInit(): void {
   }
 
+  callRelance() {
+    this.diceS.lancer(this.allDice)  
+  }
+
+  callLock(dice : Dice) {
+    this.diceS.lock(dice)  
+  }
+  
 }

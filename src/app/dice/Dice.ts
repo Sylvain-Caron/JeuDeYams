@@ -9,16 +9,5 @@ export class Dice {
         this.valeur = 0;
         this.relance = 3;
         this.lock = false;
-    }
-
-    lancer() {
-        --this.relance; //On enlève 1
-        if(this.relance != 0){
-            this.valeur = Math.floor(Math.random() * 6) + 1;
-        }
-    }
-
-
-
-    
+    }    
 }

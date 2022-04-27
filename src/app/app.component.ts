@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Joueur } from "../app/joueur/Joueur";
 import { Dice } from "../app/dice/dice";
+import { TourComponent } from "../app/tour/tour.component";
+import { Tour } from "../app/tour/Tour"
+import { TourService } from './tour.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +13,17 @@ import { Dice } from "../app/dice/dice";
 export class AppComponent {
   title = 'JeuDeYams';
 
-  joueur1 = new Joueur("Sylvain");
-  joueur2 = new Joueur("Florian");
+  constructor (private tourS : TourService) { }
 
-  //dice1 = new Dice('Dice1')
+  // @Output() nameToJoueur = new EventEmitter();
 
+  // sendName(nom : string){
+  //   console.log("Dedans" + nom)
+
+  //   this.nameToJoueur.emit(nom)
+  // }
+
+  // checkName(nom : any) {
+  //   console.log(nom)
+  // }
 }
