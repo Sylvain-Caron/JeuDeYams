@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DiceService } from '../dice.service';
 import { Dice } from './dice';
 
@@ -11,7 +11,7 @@ export class DiceComponent implements OnInit {
 
   constructor(private diceS : DiceService) { }
 
-  //Création de 6 dés
+  //Création de 5 dés
 
   D1 = new Dice("D1")
   D2 = new Dice("D2")
@@ -21,11 +21,20 @@ export class DiceComponent implements OnInit {
 
   allDice = [this.D1,this.D2,this.D3,this.D4,this.D5]
 
+  
+  @Output() dicesEmitter = new EventEmitter();
+
+
   ngOnInit(): void {
   }
 
+  sendDices(listDices : Dice[]){
+    this.dicesEmitter.emit(listDices); 
+  }
+
   callRelance() {
-    this.diceS.lancer(this.allDice)  
+    let listDices = this.diceS.lancer(this.allDice)
+    this.sendDices(listDices)
   }
 
   callLock(dice : Dice) {

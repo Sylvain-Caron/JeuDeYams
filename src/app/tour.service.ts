@@ -30,6 +30,7 @@ export class TourService {
     else if(leTour.tour == 10 && this.finDuJeu == true){
       console.log("Fin du Jeu")
     }
+    return leTour;
   }
 
   // createGame() {
