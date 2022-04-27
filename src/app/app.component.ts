@@ -15,6 +15,13 @@ export class AppComponent {
 
   constructor (private tourS : TourService) { }
 
+  nomJ1 !: string;
+  nomJ2 !: string;
+
+  getName(nomJ1 : any, nomJ2 : any) {
+    this.nomJ1 = nomJ1;
+    this.nomJ2 = nomJ2;
+  }
   // @Output() nameToJoueur = new EventEmitter();
 
   // sendName(nom : string){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Joueur } from '../joueur/Joueur';
 import { TourService } from '../tour.service';
 import { Tour } from './Tour';
@@ -12,8 +12,11 @@ export class TourComponent implements OnInit {
 
   constructor(private tourS : TourService) { }
 
-  joueur1 = new Joueur("FLORIAN")
-  joueur2 = new Joueur("SYLVAIN")
+  @Input() nomJ1 !: string;
+  @Input() nomJ2 !: string;
+
+  joueur1 = new Joueur(this.nomJ1) //Sylvain
+  joueur2 = new Joueur(this.nomJ2) //Florian
   tour = new Tour(this.joueur1)
 
   changeTest() {

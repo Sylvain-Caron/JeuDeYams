@@ -1,25 +1,27 @@
 <div class="content" role="main">
-    <app-tour></app-tour>
+    <app-tour nomJ1={{nomJ1}} nomJ2={{nomJ2}}></app-tour>
     <!-- TOUR NUMÉRO : {{ tour }} à toi {{ joueurDuTour.nom}}
     <br>
     Joueur 1 : {{ joueur1.nom }}
     <br/>
     Joueur 2 : {{ joueur2.nom }} -->
-    <app-dice></app-dice>
     <button>change tour</button>
 </div>
 
-<!-- <div>
+<div>
+    
+</div>
+
+<div>
     <div>
         <label for="NomJ1">Nom Joueur 1 : </label>
-        <input #NomJ1 type="text" name="NomJ1" value=""/>
-        <button (click)="sendName(NomJ1.value)">Valider</button>
+        <input #NomJ1 name="NomJ1" value=""/>
     </div>
     <br/>
     <div>
         <label for="NomJ2">Nom Joueur 2 : </label>
-        <input #NomJ2 type="text" name="NomJ2" value=""/>
-        <button (click)="sendName(NomJ2.value)">Valider</button>
+        <input #NomJ2 name="NomJ2" value=""/>
     </div>
+    <button (click)="getName(NomJ1.value, NomJ2.value)">Valider</button>
     
-</div> -->
+</div>
