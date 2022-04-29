@@ -9,5 +9,13 @@ export class Dice {
         this.valeur = 0;
         this.relance = 3;
         this.lock = false;
-    }    
+    }
+
+    setValeur(value : number) {
+        this.valeur = value;
+    }
+
+    getValeur() {
+        return this.valeur;
+    }
 }

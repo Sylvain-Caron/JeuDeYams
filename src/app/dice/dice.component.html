@@ -1,5 +1,6 @@
 <div *ngFor="let dice of allDice">
-    <span>{{ dice.valeur }}</span>
+    <span *ngIf="dice.valeur == 0">?</span>
+    <span *ngIf="dice.valeur != 0">{{ dice.valeur }}</span>
     <button (click)="callLock(dice)">Je garde</button>
 </div>
 

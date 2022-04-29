@@ -34,12 +34,12 @@ export class TourComponent implements OnInit {
 
   callChangeTour() { //Envoie l'objet Tour avec les dernières modifications pour l'update dans le main
     if(this.listDice != null && this.tour.tour < 10) {
-      let tour = this.tourS.changeTour(this.tour, this.joueur1, this.joueur2);
+      let tour = this.tourS.changeTour(this.tour, this.joueur1, this.joueur2); //Changement de tour qui interchange les Joueurs dans l'objet Tour
       this.sendTour(tour)
       console.log("Tour " + tour.tour)
       console.log(this.listDice)
       console.log(tour.actuelJoueur)
-      this.scoreS.calculScore(this.listDice, tour.actuelJoueur)
+      this.scoreS.calculScore(this.listDice, tour.previousJoueur) //On donne le precédent joueur pour l'ajout des points 
     }
     else if(this.listDice == null){
       alert("Vous devez lancez les dès au moins une fois !") //Obligatoire car les premiers dès sont "undefined"

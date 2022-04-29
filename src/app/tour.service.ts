@@ -18,9 +18,11 @@ export class TourService {
       if(leTour.actuelJoueur == joueur1 && this.finDuJeu != true)
       {
         leTour.actuelJoueur = joueur2;
+        leTour.previousJoueur = joueur1;
       }
       else if(leTour.actuelJoueur == joueur2 && this.finDuJeu != true){
         leTour.actuelJoueur = joueur1;
+        leTour.previousJoueur = joueur2;
       }
       if(leTour.tour == 10)
       {
