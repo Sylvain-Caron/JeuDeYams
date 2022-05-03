@@ -54,19 +54,7 @@ export class ScoreCalculService {
       [2, 3, 4, 5, 6]
     ]
     let resultat = 0
-
-    /*
-    let test = Object.entries(dictValeur).forEach(([key, value]) => {
-      console.log("test" + key, value);
-    })
-    dictValeur.sort()
-    console.log("ORDRE CROISSANT" + dictValeur.sort())
-    */
-
-
-    //console.log(dicValeur)
-    //dicValeur[valeurDice] = nombre de fois ou il y a la valeur
-    //parseInt(valeurDice) = valeur 
+    let chance = true
 
     //BRELAN + FULL
     if (Object.values(dictValeur).includes(3)) {
@@ -74,16 +62,14 @@ export class ScoreCalculService {
       if (Object.values(dictValeur).includes(2)) {
         console.log("c'est un full")
         resultat = 25
+        chance = false
       }
       //BRELAN
       else {
         console.log("c'est un brelan")
         var key: any = Object.keys(dictValeur).find(key => dictValeur[key] == 3)
-        //var valeur = dictValeur[key] // Retourne la valeur
-        //console.log("valeur "+valeur) 
-        //console.log("test "+dictValeur[key])
-        //console.log("cle "+key)
         resultat = parseInt(key) * 3
+        chance = false
       }
     }
 
@@ -91,61 +77,67 @@ export class ScoreCalculService {
     if (Object.values(dictValeur).includes(4)) {
       var key: any = Object.keys(dictValeur).find(key => dictValeur[key] == 4)
       resultat = parseInt(key) * 4
-
+      chance = false
     }
 
-
     //PETITE SUITE
-    if (Object.keys(dictValeur).length >= 4) {
+    if (Object.keys(dictValeur).length == 4) {
       console.log("petite suite")
-      let tableau : Array<number> = []
+      let tableau: Array<number> = []
       for (var valeur in dictValeur) {
         tableau.push(parseInt(valeur))
       }
       console.log("avant if " + tableau)
-      tabSuite.forEach((suite : any) => {
-        console.log("suite "+suite);
-        console.log("tab "+tableau);
-        if(JSON.stringify(tableau) === JSON.stringify(suite)) {
+      tabSuite.forEach((suite: any) => {
+        if (JSON.stringify(tableau) === JSON.stringify(suite)) {
           console.log("c ganer " + tableau)
+          resultat = 30
+          chance = false
         }
       });
     }
 
-    else {
-      //console.log("False");
-
+    //GRANDE SUITE
+    if (Object.keys(dictValeur).length == 5) {
+      console.log("grande suite")
+      let tableau: Array<number> = []
+      for (var valeur in dictValeur) {
+        tableau.push(parseInt(valeur))
+      }
+      console.log("avant if " + tableau)
+      tabSuite.forEach((suite: any) => {
+        if (JSON.stringify(tableau) === JSON.stringify(suite)) {
+          console.log("c ganer " + tableau)
+          resultat = 40
+          chance = false
+        }
+      });
     }
-
 
     //YAMS
     if (Object.values(dictValeur).includes(5)) {
       var key: any = Object.keys(dictValeur).find(key => dictValeur[key] == 5)
       resultat = 50
+      chance = false
     }
-    /*
-        //GRANDE SUITE
-        if (dicValeur[valeurDice] == 5) {
-          resultat = 40
-        }
-    /*
-        
-    
-        
-        else {
-          //resultat += parseInt(valeurDice)*dictValeur[valeurDice]
-          //console.log("ervev"+dictValeur[valeurDice])
-        }
-    */
 
-    /*
-          for (var valeurDice in dictValeur) {
-            resultat += parseInt(valeurDice) * dictValeur[valeurDice]
-            console.log("ervev" + dictValeur[valeurDice])
-          }
-    
-          console.log("resulat : " + resultat)
-    */
+
+
+    console.log("test1 " + chance)
+    //CHANCE
+
+    if (chance == true) {
+      console.log("test2 " + chance)
+
+      for (var valeurDice in dictValeur) {
+        resultat += parseInt(valeurDice) * dictValeur[valeurDice]
+        console.log("ervev" + dictValeur[valeurDice])
+      }
+    }
+
+
+    console.log("resulat : " + resultat)
+
 
     return resultat
   }
