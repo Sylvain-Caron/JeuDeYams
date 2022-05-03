@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
+import { DiceService } from './dice.service';
 import { Dice } from './dice/dice';
 import { Joueur } from './joueur/Joueur';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScoreCalculService {
 
-  constructor() { }
+  constructor(private diceS : DiceService) { }
 
   getValuesDice(listDice: Dice[]) {
     let listValeurDice = []
@@ -39,10 +41,19 @@ export class ScoreCalculService {
     leJoueur.score += valeur;
     this.callResetRelance(listDice)  
   }
+/*
+  callUnlock(listDice: Dice[]) {
+    var dice !: Dice
+    for (dice : Dice in listDice) {
+      this.diceS.unlock(dice);
+    }
+  }
+*/
 
-  callResetRelance(listDice: Dice[]) {
+    callResetRelance(listDice: Dice[]) {
     //Reçois la liste des Dès (object) et appel une fonction dans le service Dice pour remettre 
     //la relance à 3 pour le prochain Joueur
+    this.diceS.resetDice(listDice);
   }
 
   calculPoints(dictValeur: any) {
