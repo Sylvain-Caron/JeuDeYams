@@ -98,15 +98,15 @@ export class ScoreCalculService {
     //PETITE SUITE
     if (Object.keys(dictValeur).length >= 4) {
       console.log("petite suite")
-      let tableau: any = []
+      let tableau : Array<number> = []
       for (var valeur in dictValeur) {
-        tableau.push(valeur)
+        tableau.push(parseInt(valeur))
       }
       console.log("avant if " + tableau)
-      tabSuite.forEach(suite => {
+      tabSuite.forEach((suite : any) => {
         console.log("suite "+suite);
         console.log("tab "+tableau);
-        if (JSON.stringify(tableau) === JSON.stringify(suite)) {
+        if(JSON.stringify(tableau) === JSON.stringify(suite)) {
           console.log("c ganer " + tableau)
         }
       });
