@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { DiceService } from './dice.service';
 import { Dice } from './dice/dice';
 import { Joueur } from './joueur/Joueur';
+import { Tour } from './tour/Tour';
 
 
 @Injectable({
@@ -10,6 +11,8 @@ import { Joueur } from './joueur/Joueur';
 export class ScoreCalculService {
 
   constructor(private diceS : DiceService) { }
+
+  tabScore : any = []
 
   getValuesDice(listDice: Dice[]) {
     let listValeurDice = []
@@ -20,10 +23,21 @@ export class ScoreCalculService {
     return listValeurDice
   }
 
-  calculScore(listDice: Dice[], leJoueur: Joueur) {
+  setStats(stat : any) {
+    this.tabScore.push(stat)
+  }
+  
+  getStats() {
+    return this.tabScore
+  }
+  
+  calculScore(listDice: Dice[], leJoueur: Joueur, leTour : Tour) {
+    //Setup Data
     let listValeurDice = this.getValuesDice(listDice)
     let dictValeur: any = {}
-    let valeur: number = 0;
+    let valeur: any = 0;
+    let type: any = ""
+
     console.log("Dans la fonction calculScore avec la liste des dès et le Joueur : " + leJoueur)
     for (var valeurDice of listValeurDice) {
       console.log(valeurDice)
@@ -33,26 +47,31 @@ export class ScoreCalculService {
         dictValeur[valeurDice] = 1;
       }
     }
+
     // Avec la liste des dès on peut faire nos calculs 
-    valeur = this.calculPoints(dictValeur);
+    valeur = this.calculPoints(dictValeur)[0];
+    type = this.calculPoints(dictValeur)[1]
     console.log(dictValeur)
     console.log("Joueur : " + leJoueur.nom)
     console.log("Valeur : " + valeur)
     leJoueur.score += valeur;
-    this.callResetRelance(listDice)  
-  }
-/*
-  callUnlock(listDice: Dice[]) {
-    var dice !: Dice
-    for (dice : Dice in listDice) {
-      this.diceS.unlock(dice);
+    this.callResetRelance(listDice) 
+    this.callUnlock(listDice)
+    let stat = {
+      'Joueur': leJoueur.nom,
+      'Score': valeur,
+      'Tour': leTour.tour,
+      'Type': type,
+      'Total': leJoueur.score
     }
+    this.setStats(stat)
   }
-*/
 
-    callResetRelance(listDice: Dice[]) {
-    //Reçois la liste des Dès (object) et appel une fonction dans le service Dice pour remettre 
-    //la relance à 3 pour le prochain Joueur
+  callUnlock(listDice: Dice[]) {
+      this.diceS.unlock(listDice);
+  }
+
+  callResetRelance(listDice: Dice[]) {
     this.diceS.resetDice(listDice);
   }
 
@@ -66,7 +85,8 @@ export class ScoreCalculService {
       [2, 3, 4, 5, 6]
     ]
     let resultat = 0 
-    let chance = true 
+    let chance = true
+    let type = ""
 
     //BRELAN + FULL
     if (Object.values(dictValeur).includes(3)) {
@@ -75,6 +95,7 @@ export class ScoreCalculService {
         console.log("Full")
         resultat = 25
         chance = false
+        type = "Full"
       }
       //BRELAN
       else {
@@ -82,6 +103,7 @@ export class ScoreCalculService {
         var key: any = Object.keys(dictValeur).find(key => dictValeur[key] == 3)
         resultat = parseInt(key) * 3
         chance = false
+        type = "Brelan"
       }
     }
 
@@ -90,6 +112,7 @@ export class ScoreCalculService {
       var key: any = Object.keys(dictValeur).find(key => dictValeur[key] == 4)
       resultat = parseInt(key) * 4
       chance = false
+      type = "Carré"
     }
 
     //PETITE SUITE
@@ -103,6 +126,7 @@ export class ScoreCalculService {
           console.log("Petite suite")
           resultat = 30
           chance = false
+          type = "Petite Suite"
         }
       });
     }
@@ -118,6 +142,7 @@ export class ScoreCalculService {
           console.log("Grande suite")
           resultat = 40
           chance = false
+          type = "Grande Suite"
         }
       });
     }
@@ -134,9 +159,11 @@ export class ScoreCalculService {
       for (var valeurDice in dictValeur) {
         resultat += parseInt(valeurDice) * dictValeur[valeurDice]
       }
+      console.log("Chance")
+      type = "Chance"
     }
-    console.log("Résultat : " + resultat)
+    //console.log("Résultat : " + resultat)
 
-    return resultat
+    return [resultat, type]
   }
 }

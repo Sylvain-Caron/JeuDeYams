@@ -11,8 +11,7 @@ export class DiceComponent implements OnInit {
 
   constructor(private diceS : DiceService) { }
 
-  //Création de 5 dés
-
+  //Création des 5 dés
   D1 = new Dice("D1")
   D2 = new Dice("D2")
   D3 = new Dice("D3")

@@ -7,10 +7,6 @@ export class Joueur {
         this.score = 0;
     }
 
-    addScore(value : number) {
-        this.score = this.score + value;
-    }
-
     getScore() {
         return this.score;
     }

@@ -8,18 +8,4 @@ export class Tour {
     constructor (joueur : Joueur) { 
         this.actuelJoueur = joueur;
     }
-
-
-    changeTour() {
-        this.tour++;
-    }
-
-    changeJoueur(leJoueur : Joueur, autreJoueur : Joueur) {
-        if(this.actuelJoueur == leJoueur){
-            this.actuelJoueur = autreJoueur;
-        }
-        else{
-            this.actuelJoueur = leJoueur;
-        }
-    }
 }

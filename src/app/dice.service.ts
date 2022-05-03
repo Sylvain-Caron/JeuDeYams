@@ -32,16 +32,26 @@ export class DiceService {
     dice.lock = true;
   }
 
-  unlock(dice : Dice){
-    // console.log(dice)
-    dice.lock = false;
+  unlock(listDice : Dice[]){
+    for(var dice of listDice) {
+      dice.lock = false;
+    }
   }
 
   resetDice(listDice : Dice[]) {
-    //On reset la relance des dès à 3 pour que le prochain joueur puisse faire 3 lancés
     for(var dice of listDice) {
       dice.relance = 3;
     }
+  }
+
+  //Regarde si l'un des dès est à 0'
+  checkValeur(listDice : Dice[]) {
+    for(var dice of listDice) {
+      if(dice.valeur == 0){
+        return true;
+      }
+    }
+    return false;
   }
 
 }

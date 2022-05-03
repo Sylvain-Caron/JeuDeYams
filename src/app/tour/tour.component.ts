@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange } from '@angular/core';
+import { DiceService } from '../dice.service';
 import { Dice } from '../dice/dice';
 import { Joueur } from '../joueur/Joueur';
 import { ScoreCalculService } from '../score-calcul.service';
@@ -12,36 +13,53 @@ import { Tour } from './Tour';
 })
 export class TourComponent implements OnInit {
 
-  constructor(private tourS : TourService, private scoreS : ScoreCalculService) { }
+  constructor(private tourS : TourService, private scoreS : ScoreCalculService, private diceS : DiceService) { }
 
-  @Input() nomJ1 = "Sylvain";
-  @Input() nomJ2 = "Florian";
+  @Input() DataJoueur !: Joueur[];
   @Output() tourEmitter = new EventEmitter();
-
+  @Output() tabScoreEmitter = new EventEmitter()
   @Input() listDice !: Dice[];
 
-  joueur1 = new Joueur(this.nomJ1) //Sylvain
-  joueur2 = new Joueur(this.nomJ2) //Florian
+  joueur1 = new Joueur("") //Sylvain
+  joueur2 = new Joueur("") //Florian
   tour = new Tour(this.joueur1)
+  tabScore : any = []
 
   ngOnInit(): void {
     
   }
+  
+  ngOnChanges(changes: any) {
+    //Condition pour que le changement s'effectue seulement lors du premier envoi du formulaire
+    if(changes.DataJoueur){
+      this.joueur1.nom = changes.DataJoueur.currentValue[0].nom
+      this.joueur2.nom = changes.DataJoueur.currentValue[1].nom
+    } 
+  }
+
+  sendTabScore() {
+    console.log("ICI" + this.scoreS.getStats())
+    this.tabScoreEmitter.emit(this.scoreS.getStats());
+  }
 
   sendTour(leTour : Tour) { //Envoie l'objet Tour pour pouvoir avoir les données dans le main
-    this.tourEmitter.emit(leTour); 
+    this.tourEmitter.emit(leTour);
   }
 
   callChangeTour() { //Envoie l'objet Tour avec les dernières modifications pour l'update dans le main
-    if(this.listDice != null && this.tour.tour < 10) {
+    if(this.listDice != null && this.tour.tour <= 10 && this.diceS.checkValeur(this.listDice) == false) {
+      
+      this.scoreS.calculScore(this.listDice, this.tour.actuelJoueur, this.tour)
+      this.tabScore = this.scoreS.getStats()
+      this.sendTabScore()
+
       let tour = this.tourS.changeTour(this.tour, this.joueur1, this.joueur2); //Changement de tour qui interchange les Joueurs dans l'objet Tour
       this.sendTour(tour)
       console.log("Tour " + tour.tour)
-      console.log(this.listDice)
-      console.log(tour.actuelJoueur)
-      this.scoreS.calculScore(this.listDice, tour.previousJoueur) //On donne le precédent joueur pour l'ajout des points 
+      // console.log(this.listDice)
+
     }
-    else if(this.listDice == null){
+    else if(this.listDice == null || this.diceS.checkValeur(this.listDice) == true){
       alert("Vous devez lancez les dès au moins une fois !") //Obligatoire car les premiers dès sont "undefined"
     }
     else {

@@ -13,8 +13,8 @@ export class TourService {
 
   changeTour(leTour : Tour, joueur1 : Joueur, joueur2: Joueur) {
     console.log("CHANGEMENT DE TOUR")
-    if(leTour.tour < 10){
-      ++leTour.tour
+    if(leTour.tour <= 10){
+      leTour.tour++
       if(leTour.actuelJoueur == joueur1 && this.finDuJeu != true)
       {
         leTour.actuelJoueur = joueur2;
@@ -34,10 +34,4 @@ export class TourService {
     }
     return leTour;
   }
-
-  // createGame() {
-  //   let joueurUn = new Joueur("Sylvain");
-  //   let joueurDeux = new Joueur("Florian")
-  //   let tour = new Tour(joueurUn);
-  // }
 }

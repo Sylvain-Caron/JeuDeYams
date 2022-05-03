@@ -1,0 +1,40 @@
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+
+<table>
+    <thead>
+        <th><span>Tableau des Scores</span></th>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Joueur</th>
+            <th>Score</th>
+            <th>Tour</th>
+            <th>Type</th>
+            <th>Total</th>
+        </tr>
+        <tr *ngFor="let tab of tabScore">
+            
+            <td><span>{{ tab.Joueur }} </span></td>
+            <td><span>{{ tab.Score }}</span></td>
+            <td><span>{{ tab.Tour }}</span></td>
+            <td><span>{{ tab.Type }}</span></td>
+            <td><span>{{ tab.Total }}</span></td>
+        </tr>
+    </tbody>
+</table>
