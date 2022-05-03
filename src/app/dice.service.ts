@@ -33,7 +33,10 @@ export class DiceService {
   }
 
   resetDice(listDice : Dice[]) {
-    //On reset la relance des dès à 3 pour que le prochain joueur puisse faire 3 lancés 
+    //On reset la relance des dès à 3 pour que le prochain joueur puisse faire 3 lancés
+    for(var dice of listDice) {
+      dice.relance = 3;
+    }
   }
 
 }

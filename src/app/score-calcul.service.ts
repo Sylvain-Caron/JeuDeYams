@@ -30,14 +30,14 @@ export class ScoreCalculService {
       } else {
         dictValeur[valeurDice] = 1;
       }
-      // valeur += valeurDice // TEST
     }
+    // Avec la liste des dès on peut faire nos calculs 
     valeur = this.calculPoints(dictValeur);
     console.log(dictValeur)
     console.log("Joueur : " + leJoueur.nom)
     console.log("Valeur : " + valeur)
     leJoueur.score += valeur;
-    // Avec la liste des dès on peut faire nos calculs 
+    this.callResetRelance(listDice)  
   }
 
   callResetRelance(listDice: Dice[]) {
@@ -46,6 +46,7 @@ export class ScoreCalculService {
   }
 
   calculPoints(dictValeur: any) {
+    //Setup variable
     const tabSuite = [
       [1, 2, 3, 4],
       [2, 3, 4, 5],
@@ -53,20 +54,20 @@ export class ScoreCalculService {
       [1, 2, 3, 4, 5],
       [2, 3, 4, 5, 6]
     ]
-    let resultat = 0
-    let chance = true
+    let resultat = 0 
+    let chance = true 
 
     //BRELAN + FULL
     if (Object.values(dictValeur).includes(3)) {
       //FULL
       if (Object.values(dictValeur).includes(2)) {
-        console.log("c'est un full")
+        console.log("Full")
         resultat = 25
         chance = false
       }
       //BRELAN
       else {
-        console.log("c'est un brelan")
+        console.log("Brelan")
         var key: any = Object.keys(dictValeur).find(key => dictValeur[key] == 3)
         resultat = parseInt(key) * 3
         chance = false
@@ -82,15 +83,13 @@ export class ScoreCalculService {
 
     //PETITE SUITE
     if (Object.keys(dictValeur).length == 4) {
-      console.log("petite suite")
       let tableau: Array<number> = []
       for (var valeur in dictValeur) {
         tableau.push(parseInt(valeur))
       }
-      console.log("avant if " + tableau)
       tabSuite.forEach((suite: any) => {
         if (JSON.stringify(tableau) === JSON.stringify(suite)) {
-          console.log("c ganer " + tableau)
+          console.log("Petite suite")
           resultat = 30
           chance = false
         }
@@ -99,15 +98,13 @@ export class ScoreCalculService {
 
     //GRANDE SUITE
     if (Object.keys(dictValeur).length == 5) {
-      console.log("grande suite")
       let tableau: Array<number> = []
       for (var valeur in dictValeur) {
         tableau.push(parseInt(valeur))
       }
-      console.log("avant if " + tableau)
       tabSuite.forEach((suite: any) => {
         if (JSON.stringify(tableau) === JSON.stringify(suite)) {
-          console.log("c ganer " + tableau)
+          console.log("Grande suite")
           resultat = 40
           chance = false
         }
@@ -121,25 +118,14 @@ export class ScoreCalculService {
       chance = false
     }
 
-
-
-    console.log("test1 " + chance)
     //CHANCE
-
     if (chance == true) {
-      console.log("test2 " + chance)
-
       for (var valeurDice in dictValeur) {
         resultat += parseInt(valeurDice) * dictValeur[valeurDice]
-        console.log("ervev" + dictValeur[valeurDice])
       }
     }
-
-
-    console.log("resulat : " + resultat)
-
+    console.log("Résultat : " + resultat)
 
     return resultat
   }
-
 }
