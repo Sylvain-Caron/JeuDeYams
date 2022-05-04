@@ -152,6 +152,7 @@ export class ScoreCalculService {
       var key: any = Object.keys(dictValeur).find(key => dictValeur[key] == 5)
       resultat = 50
       chance = false
+      type = "Yam's"
     }
 
     //CHANCE
