@@ -71,7 +71,7 @@
 
     .form-horizontal .btn {
         color: rgba(17, 10, 10, 0.8);
-        background: rgba(255, 184, 6);
+        background: rgb(226, 226, 30);
         font-size: 15px;
         font-weight: 500;
         text-transform: uppercase;
@@ -85,6 +85,10 @@
         display: inline-block;
         transform: translateX(30px);
         transition: all 0.3s ease;
+        -webkit-animation: glowing 3s infinite;
+        -moz-animation: glowing 3s infinite;
+        -o-animation: glowing 3s infinite;
+        animation: glowing 3s infinite;
     }
 
     .form-horizontal .btn:hover,
@@ -119,6 +123,35 @@
     }
     #Joueur1::placeholder, #Joueur2::placeholder {
         color: white;
+    }
+    
+    @-webkit-keyframes glowing {
+    0% {
+        background-color: rgb(205, 205, 16);
+        -webkit-box-shadow: 0 0 3px rgb(243, 238, 110);
+    }
+    50% {
+        background-color: rgb(205, 205, 16);
+        -webkit-box-shadow: 0 0 15px rgb(243, 238, 110);;
+    }
+    100% {
+        background-color: rgb(205, 205, 16);
+        -webkit-box-shadow: 0 0 3px rgb(243, 238, 110);;
+    }
+    }
+    @keyframes glowing {
+    0% {
+        background-color: rgb(205, 205, 16);
+        box-shadow: 0 0 3px rgb(243, 238, 110);;
+    }
+    50% {
+        background-color: rgb(205, 205, 16);
+        box-shadow: 0 0 15px rgb(243, 238, 110);;
+    }
+    100% {
+        background-color: rgb(205, 205, 16);
+        box-shadow: 0 0 3px rgb(243, 238, 110);;
+    }
     }
 </style>
 
@@ -156,7 +189,7 @@
                                     ngModel required #second="ngModel">
                             </div>
                             <span class="forgot-pass"><a href="#"></a></span>
-                            <button type="submit" class="btn signin">Valider</button>
+                            <button type="submit" class="btn signin" style="font-family: 'Teko', sans-serif; font-weight: bold;">Valider</button>
                         </form>
                     </div>
                 </div>
