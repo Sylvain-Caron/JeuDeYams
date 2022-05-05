@@ -4,7 +4,14 @@
     }
     #my_centered_buttons { 
         display: flex;
-        justify-content: center; 
+        justify-content: center;
+        font-family: Franklin Gothic Medium;
+    }
+    #btn-relance {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        border: 1px solid rgb(14, 14, 14);
     }
     .card {
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -14,6 +21,7 @@
       display : inline-block;
       margin-left: 5px;
       margin-right: 5px;
+      font-family: Franklin Gothic Medium;
     }
     
     .card:hover {
@@ -34,6 +42,38 @@
         font-size: 25px;
         font-family: Bebas;
     }
+
+    .button-52 {
+        font-size: 16px;
+        font-weight: 200;
+        letter-spacing: 1px;
+        padding: 13px 20px 13px;
+        outline: 0;
+        border: 1px solid black;
+        cursor: pointer;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+      
+      .button-52:after {
+        content: "";
+        background-color: #ffe54c;
+        width: 100%;
+        z-index: -1;
+        position: absolute;
+        height: 100%;
+        top: 7px;
+        left: 7px;
+        transition: 0.2s;
+      }
+      
+      .button-52:hover:after {
+        top: 0px;
+        left: 0px;
+      }
 </style>
 
 <!-- <div *ngFor="let dice of allDice">
@@ -41,6 +81,7 @@
     <span *ngIf="dice.valeur != 0">{{ dice.valeur }}</span>
     <button (click)="callLock(dice)">Je garde</button>
 </div> -->
+
 <div class="container">
     <div class="row">
         <div class="col">
@@ -51,7 +92,7 @@
                         <span *ngIf="dice.valeur == 0">?</span>
                         <span *ngIf="dice.valeur != 0">{{ dice.valeur }}</span>
                     </p>
-                    <button style="width: 100%" class="btn btn-primary" (click)="callLock(dice)">Je garde</button>
+                    <button style="width: 100%;" class="btn btn-primary" (click)="callLock(dice)">Je garde</button>
                     <!-- margin: 0 25% 0 32.6%;  -->
                 </div>
             </div>
@@ -59,6 +100,7 @@
     </div>
     <br/>
     <div id="my_centered_buttons">
-        <button class="btn btn-success" (click)="callRelance()">Relance</button>
+        <button class="btn btn-success"  (click)="callRelance()">Relance</button>
+        <!-- id="btn-relance" -->
     </div>
 </div>

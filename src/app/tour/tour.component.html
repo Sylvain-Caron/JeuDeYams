@@ -1,4 +1,4 @@
-<div>
+<!-- <div class="container">
     <div *ngIf="tour.tour == 11; else elseBlock">
         <span>Fin de partie</span>
         <span *ngIf="tour.actuelJoueur.score > tour.previousJoueur.score; else second">
@@ -13,5 +13,46 @@
     </ng-template>
     <span> Joueur en cours : {{ tour.actuelJoueur.nom }} -</span>
     <span> Score : {{ tour.actuelJoueur.score }}</span>
-    <button (click)="callChangeTour()">Changement de Tour</button>
-</div>
+    <br/>
+    <div>
+        <button (click)="callChangeTour()">Changement de Tour</button>
+    </div>
+</div> -->
+
+<style>
+
+    #baniere{
+        margin-top: 50px;
+        margin-bottom: 100px;
+        overflow: hidden;
+        background-color: #f1f1f1;
+        padding: 20px 10px;
+        font-family: Franklin Gothic Medium;
+        font-size: 20px;
+        border-radius: 10px 100px / 120px;
+    }
+</style>
+
+<div class="container" id="baniere" style="text-align: center;">
+    <div class="row">
+        <div *ngIf="tour.tour == 11;" class="col-md-4">
+            <span>Fin de partie</span>
+            <span *ngIf="tour.actuelJoueur.score > tour.previousJoueur.score; else second">
+                    Gagnant : {{ tour.actuelJoueur.nom }}
+            </span>
+            <ng-template #second>
+                <span>Gagnant : {{ tour.previousJoueur.nom }}</span>
+            </ng-template>
+        </div>
+        <div class="col-md-4" *ngIf="tour.tour < 11;">
+            <span>Tour : {{ tour.tour }}</span> <br/>
+        </div>
+        <div class="col-md-4">
+            <span>Joueur en cours : {{ tour.actuelJoueur.nom }} -</span>
+            <span> Score : {{ tour.actuelJoueur.score }}</span>
+        </div>
+        <div class="col-md-4"> 
+            <button class="btn btn-success" (click)="callChangeTour()">Changement de Tour</button>
+        </div>
+     </div>
+ </div>
