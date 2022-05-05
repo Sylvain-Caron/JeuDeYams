@@ -40,6 +40,10 @@ export class DiceService {
     }
   }
 
+  unlockDice(dice : Dice) {
+    dice.lock = false;
+  }
+
   resetDice(listDice : Dice[]) {
     for(var dice of listDice) {
       dice.relance = 3;
@@ -55,5 +59,4 @@ export class DiceService {
     }
     return false;
   }
-
 }

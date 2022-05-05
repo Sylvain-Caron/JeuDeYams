@@ -19,10 +19,8 @@ export class DiceComponent implements OnInit {
   D5 = new Dice("D5")
 
   allDice = [this.D1,this.D2,this.D3,this.D4,this.D5]
-
   
   @Output() dicesEmitter = new EventEmitter();
-
 
   ngOnInit(): void {
   }
@@ -39,5 +37,8 @@ export class DiceComponent implements OnInit {
   callLock(dice : Dice) {
     this.diceS.lock(dice)  
   }
-  
+
+  callUnlock(dice : Dice) {
+    this.diceS.unlockDice(dice)
+  }
 }
