@@ -28,8 +28,10 @@ export class DiceService {
   }
 
   lock(dice : Dice){
-    // console.log(dice)
-    dice.lock = true;
+    //Check si la valeur n'est pas 0|?
+    if(dice.getValeur() != 0) {
+      dice.lock = true;
+    }
   }
 
   unlock(listDice : Dice[]){
