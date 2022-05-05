@@ -140,21 +140,21 @@
     }
     }
     @keyframes glowing {
-    0% {
-        background-color: rgb(205, 205, 16);
-        box-shadow: 0 0 3px rgb(243, 238, 110);;
+        0% {
+            background-color: rgb(205, 205, 16);
+            box-shadow: 0 0 3px rgb(243, 238, 110);;
+        }
+        50% {
+            background-color: rgb(205, 205, 16);
+            box-shadow: 0 0 15px rgb(243, 238, 110);;
+        }
+        100% {
+            background-color: rgb(205, 205, 16);
+            box-shadow: 0 0 3px rgb(243, 238, 110);;
+        }
     }
-    50% {
-        background-color: rgb(205, 205, 16);
-        box-shadow: 0 0 15px rgb(243, 238, 110);;
-    }
-    100% {
-        background-color: rgb(205, 205, 16);
-        box-shadow: 0 0 3px rgb(243, 238, 110);;
-    }
-    }
-</style>
 
+</style>
 
 <!-- <div>
 
@@ -169,14 +169,14 @@
     </form>
 
 </div> -->
+
 <div class="background-form">
-    
     <div class="form-bg">
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
                     <div class="form-container">
-                        <form class="form-horizontal form" #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+                        <form class="form-horizontal form gradient-border" #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
                             <h3 class="title" style="color: white;">YAM'S</h3>
                             <div class="form-group">
                                 <span class="input-icon" style="color:white;"><i class="fa fa-user"></i></span>
