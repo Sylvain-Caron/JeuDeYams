@@ -140,7 +140,14 @@
     </div>
     <br/>
     <div id="my_centered_buttons"> 
-        <button class="btn btn-success" style="width: 300px; height: 50px; font-size: 20px;" (click)="callRelance()">Lancer !</button>
+        <button class="btn btn-success" style="width: 300px; height: 50px; font-size: 20px;" (click)="callRelance()">
+            <span>
+                Lancer !
+            </span>
+            <span *ngIf="lancer < 3 && lancer > 0">
+                {{ lancer }} restant(s)
+            </span>
+        </button>
     </div>
     
 </div>

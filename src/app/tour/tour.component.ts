@@ -24,6 +24,8 @@ export class TourComponent implements OnInit {
   joueur2 = new Joueur("") //Florian
   tour = new Tour(this.joueur1)
   tabScore : any = []
+  lancer = 3;
+
 
   ngOnInit(): void {
     

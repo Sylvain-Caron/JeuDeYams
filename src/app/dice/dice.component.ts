@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DiceService } from '../dice.service';
 import { Dice } from './dice';
 
@@ -18,6 +18,8 @@ export class DiceComponent implements OnInit {
   D4 = new Dice("D4")
   D5 = new Dice("D5")
 
+  lancer : any = 3;
+
   allDice = [this.D1,this.D2,this.D3,this.D4,this.D5]
   
   @Output() dicesEmitter = new EventEmitter();
@@ -30,8 +32,10 @@ export class DiceComponent implements OnInit {
   }
 
   callRelance() {
-    let listDices = this.diceS.lancer(this.allDice)
+    let listDices = this.diceS.lancer(this.allDice);
     this.sendDices(listDices)
+    var valeur = this.diceS.lessRelance(this.allDice, this.lancer);
+    this.lancer = valeur;
   }
 
   callLock(dice : Dice) {

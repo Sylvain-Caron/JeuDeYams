@@ -8,9 +8,18 @@ export class DiceService {
 
   constructor() { }
 
+  lessRelance(allDice : Dice[], valeur : any) {
+    var valeur : any = 3;
+    for(var dice of allDice){
+      if(dice.relance < valeur){
+        valeur = dice.relance
+      }
+    }
+    return valeur
+  }
 
   lancer(allDice : Dice[]) {
-    // console.log("test")
+    var possible = true;
     for(var dice of allDice){
       if(dice.lock == false && dice.relance > 0 ){
         dice.valeur=Math.floor(Math.random()*6)+1;
@@ -21,10 +30,15 @@ export class DiceService {
         console.log("Le dès : " + dice.nom + " est lock !")
 
       }
-      else
+      else {
         console.log("Aucune relance possible")
+        possible = false;
       }
-    return allDice;
+    }
+    if(!possible) {
+      alert("Aucune relance possible pour vous !")
+    }
+    return allDice
   }
 
   lock(dice : Dice){
