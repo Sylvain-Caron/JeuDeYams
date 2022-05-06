@@ -47,7 +47,6 @@ export class ScoreCalculService {
         dictValeur[valeurDice] = 1;
       }
     }
-
     // Avec la liste des dès on peut faire nos calculs 
     valeur = this.calculPoints(dictValeur)[0];
     type = this.calculPoints(dictValeur)[1]
@@ -121,6 +120,7 @@ export class ScoreCalculService {
       for (var valeur in dictValeur) {
         tableau.push(parseInt(valeur))
       }
+      // tableau.sort()
       tabSuite.forEach((suite: any) => {
         if (JSON.stringify(tableau) === JSON.stringify(suite)) {
           console.log("Petite suite")

@@ -43,38 +43,37 @@
         font-family: Bebas;
         font-weight: bold;
     }
-
-    .button-52 {
-        font-size: 16px;
-        font-weight: 200;
-        letter-spacing: 1px;
-        padding: 13px 20px 13px;
-        outline: 0;
-        border: 1px solid black;
+    .visible {
+        display: none;
+        margin-bottom: 50px;
+    }
+    .regle {
+        background-color: #777;
+        color: white;
         cursor: pointer;
-        position: relative;
-        background-color: rgba(0, 0, 0, 0);
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-      }
-      
-      .button-52:after {
-        content: "";
-        background-color: #ffe54c;
+        padding: 18px;
         width: 100%;
-        z-index: -1;
-        position: absolute;
-        height: 100%;
-        top: 7px;
-        left: 7px;
-        transition: 0.2s;
-      }
-      
-      .button-52:hover:after {
-        top: 0px;
-        left: 0px;
-      }
+        border: solid 1px;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        border-radius: 20px;
+    }
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #000000;
+    }
 </style>
 
 <!-- <div *ngFor="let dice of allDice">
@@ -84,8 +83,46 @@
 </div> -->
 
 <div class="container">
+    <div id='regle' class="visible regle">
+        <table style="width: 100%">
+            <tbody>
+                <tr>
+                    <th>Type</th>
+                    <th>Règle</th>
+                </tr>
+                <tr>
+                    <td>Brelan</td>
+                    <td>3 dès identiques (Somme des 3 dès)</td>
+                </tr>
+                <tr>
+                    <td>Carré</td>
+                    <td>4 dès identiques (Somme des 4 dès)</td>
+                </tr>
+                <tr>
+                    <td>Full</td>
+                    <td>3 dès identiques + 2 dès identiques (25 pts)</td>
+                </tr>
+                <tr>
+                    <td>Petite Suite</td>
+                    <td>4 dès qui se suivent (25pts)</td>
+                </tr>
+                <tr>
+                    <td>Grande Suite</td>
+                    <td>5 dès qui se suivent (40pts)</td>
+                </tr>
+                <tr>
+                    <td>YAM'S</td>
+                    <td>5 dès identiques (50pts)</td>
+                </tr>
+                <tr>
+                    <td>Chance</td>
+                    <td>Somme des dès</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="row">
-        <div class="col">
+        <div class="col" style="margin-top: 25px;">
             <div *ngFor="let dice of allDice;" class="card" style="width: 19.1%;">
                 <h5 *ngIf="dice.lock" class="card-header" style="text-align: center; font-size:36px;"><i class="fa fa-lock"></i></h5>
                 <h5 *ngIf="!dice.lock" class="card-header" style="text-align: center; font-size:36px"><i class="fa fa-unlock"></i></h5>
@@ -94,8 +131,8 @@
                         <span *ngIf="dice.valeur == 0">?</span>
                         <span *ngIf="dice.valeur != 0">{{ dice.valeur }}</span>
                     </p>
-                    <button *ngIf="dice.lock" style="width: 100%;" class="btn btn-danger" (click)="callUnlock(dice)">Je laisse</button>
-                    <button *ngIf="!dice.lock" style="width: 100%;" class="btn btn-primary" (click)="callLock(dice)">Je garde</button>
+                    <button *ngIf="dice.lock" style="width: 100%; font-size: 20px;" class="btn btn-danger" (click)="callUnlock(dice)">Je laisse</button>
+                    <button *ngIf="!dice.lock" style="width: 100%; font-size: 20px;" class="btn btn-primary" (click)="callLock(dice)">Je garde</button>
                     <!-- margin: 0 25% 0 32.6%;  -->
                 </div>
             </div>
@@ -103,6 +140,7 @@
     </div>
     <br/>
     <div id="my_centered_buttons"> 
-        <button class="btn btn-success" (click)="callRelance()">Lancer !</button>
+        <button class="btn btn-success" style="width: 300px; height: 50px; font-size: 20px;" (click)="callRelance()">Lancer !</button>
     </div>
+    
 </div>

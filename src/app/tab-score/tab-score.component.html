@@ -17,26 +17,30 @@
 </style>
 
 <div class="container">
-  <table>
-      <thead>
-          <th><span>Tableau des Scores</span></th>
-      </thead>
-      <tbody>
-          <tr>
-              <th>Joueur</th>
-              <th>Score</th>
-              <th>Tour</th>
-              <th>Type</th>
-              <th>Total</th>
-          </tr>
-          <tr *ngFor="let tab of tabScore">
-              
-              <td><span>{{ tab.Joueur }} </span></td>
-              <td><span>{{ tab.Score }}</span></td>
-              <td><span>{{ tab.Tour }}</span></td>
-              <td><span>{{ tab.Type }}</span></td>
-              <td><span>{{ tab.Total }}</span></td>
-          </tr>
-      </tbody>
-  </table>
+  <div class="row">
+    <div class="">
+      <table>
+          <thead>
+              <th><span>Tableau des Scores</span></th>
+          </thead>
+          <tbody>
+              <tr>
+                  <th>Joueur</th>
+                  <th>Score</th>
+                  <th>Tour</th>
+                  <th>Type</th>
+                  <th>Total</th>
+              </tr>
+              <tr *ngFor="let tab of tabScore">
+                  
+                  <td><span>{{ tab.Joueur }} </span></td>
+                  <td><span>{{ tab.Score }}</span></td>
+                  <td><span>{{ tab.Tour }}</span></td>
+                  <td><span>{{ tab.Type }}</span></td>
+                  <td><span>{{ tab.Total }}</span></td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
 </div>
