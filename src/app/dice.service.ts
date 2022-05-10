@@ -8,16 +8,6 @@ export class DiceService {
 
   constructor() { }
 
-  lessRelance(allDice : Dice[], valeur : any) {
-    var valeur : any = 3;
-    for(var dice of allDice){
-      if(dice.relance < valeur){
-        valeur = dice.relance
-      }
-    }
-    return valeur
-  }
-
   lancer(allDice : Dice[]) {
     var possible = true;
     for(var dice of allDice){
