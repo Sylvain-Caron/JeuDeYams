@@ -15,6 +15,10 @@ export class DiceService {
         dice.valeur=Math.floor(Math.random()*6)+1;
         --dice.relance;
       }
+      else if(dice.lock) {
+        console.log("Le dès : " + dice.nom + " est lock !")
+        //Pas d'action le dès est Lock
+      }
       else {
         possible = false;
       }
