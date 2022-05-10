@@ -2,7 +2,7 @@
 
 Ce Projet est le Jeu de Yam's développer avec le Framework Angular.
 
-## Créateur
+## Créateurs
 
 - Sylvain Caron
 - Florian Chanchus
