@@ -1,27 +1,35 @@
 # JeuDeYams
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+Ce Projet est le Jeu de Yam's développer avec le Framework Angular.
+
+## Créateur
+
+-> Sylvain Caron
+-> Florian Chanchus
+
+## Informations
+
+- Un `diaporama` est disponible pour voir les relations entre les Composents et les Services, celui-ci liste aussi les Classes
+- Une `vidéo` est disponible pour la démonstration des fonctionnalités 
+
+## Gameplay
+
+Les Joueurs peuvent :
+
+-> Inscrire leur nom
+-> Lire les règles (Bouton)
+-> Changer de tour (Bouton)
+-> Lancer les dès (Bouton)
+-> Bloquer/Débloquer des dès (Bouton)
+
+Autres fonctionnalités :
+
+-> Le nom du joueur en cours s'affiche en haut, ainsi que son score actuel
+-> Le tour s'affiche
+-> Le score à chaque tour s'inscrit dans le tableau des scores en bas
+-> À la fin du jeu, le Gagnant s'affiche à la place du joueur en cours
+-> À la fin du jeu, les joueurs ne peuvent plus changer de tour
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
