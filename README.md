@@ -24,6 +24,7 @@ Les Joueurs peuvent :
 
 Autres fonctionnalités :
 
+- Des alertes s'affiche si le joueur n'a pas de relance, ou s'il essaye de changer de tour alors qu'il n'a pas lancé les dès au moins une fois
 - Le nom du joueur en cours s'affiche en haut, ainsi que son score actuel
 - Le tour s'affiche
 - Le score à chaque tour s'inscrit dans le tableau des scores en bas
