@@ -29,7 +29,6 @@ export class AppComponent {
 
   receiveDices($event: Dice[]) {  
     this.listDice = $event;
-    console.log(this.listDice); 
   }
 
   receiveDataJoueur($event : any) {

@@ -12,7 +12,6 @@ export class TourService {
   finDuJeu !: boolean;
 
   changeTour(leTour : Tour, joueur1 : Joueur, joueur2: Joueur) {
-    console.log("CHANGEMENT DE TOUR")
     if(leTour.tour <= 10){
       /*
         Interchange des joueurs et ajout du tour au joueur

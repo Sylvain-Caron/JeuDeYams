@@ -24,8 +24,6 @@ export class TourComponent implements OnInit {
   joueur2 = new Joueur("") //Florian
   tour = new Tour(this.joueur1)
   tabScore : any = []
-  lancer = 3;
-
 
   ngOnInit(): void {
     
@@ -40,7 +38,6 @@ export class TourComponent implements OnInit {
   }
 
   sendTabScore() {
-    console.log("ICI" + this.scoreS.getStats())
     this.tabScoreEmitter.emit(this.scoreS.getStats());
   }
 
@@ -57,9 +54,6 @@ export class TourComponent implements OnInit {
 
       let tour = this.tourS.changeTour(this.tour, this.joueur1, this.joueur2); //Changement de tour qui interchange les Joueurs dans l'objet Tour
       this.sendTour(tour)
-      console.log("Tour " + tour.tour)
-      // console.log(this.listDice)
-
     }
     else if(this.listDice == null || this.diceS.checkValeur(this.listDice) == true){
       alert("Vous devez lancez les dès au moins une fois !") //Obligatoire car les premiers dès sont "undefined"

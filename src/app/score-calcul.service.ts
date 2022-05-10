@@ -37,10 +37,8 @@ export class ScoreCalculService {
     let dictValeur: any = {}
     let valeur: any = 0;
     let type: any = ""
-
-    console.log("Dans la fonction calculScore avec la liste des dès et le Joueur : " + leJoueur)
+    //Récupère que la valeur des dès
     for (var valeurDice of listValeurDice) {
-      console.log(valeurDice)
       if (dictValeur[valeurDice]) {
         dictValeur[valeurDice] += 1;
       } else {
@@ -50,9 +48,6 @@ export class ScoreCalculService {
     // Avec la liste des dès on peut faire nos calculs 
     valeur = this.calculPoints(dictValeur)[0];
     type = this.calculPoints(dictValeur)[1]
-    console.log(dictValeur)
-    console.log("Joueur : " + leJoueur.nom)
-    console.log("Valeur : " + valeur)
     leJoueur.score += valeur;
     this.callResetRelance(listDice) 
     this.callUnlock(listDice)
@@ -91,14 +86,12 @@ export class ScoreCalculService {
     if (Object.values(dictValeur).includes(3)) {
       //FULL
       if (Object.values(dictValeur).includes(2)) {
-        console.log("Full")
         resultat = 25
         chance = false
         type = "Full"
       }
       //BRELAN
       else {
-        console.log("Brelan")
         var key: any = Object.keys(dictValeur).find(key => dictValeur[key] == 3)
         resultat = parseInt(key) * 3
         chance = false
@@ -123,7 +116,6 @@ export class ScoreCalculService {
       // tableau.sort()
       tabSuite.forEach((suite: any) => {
         if (JSON.stringify(tableau) === JSON.stringify(suite)) {
-          console.log("Petite suite")
           resultat = 30
           chance = false
           type = "Petite Suite"
@@ -139,7 +131,6 @@ export class ScoreCalculService {
       }
       tabSuite.forEach((suite: any) => {
         if (JSON.stringify(tableau) === JSON.stringify(suite)) {
-          console.log("Grande suite")
           resultat = 40
           chance = false
           type = "Grande Suite"
@@ -160,10 +151,8 @@ export class ScoreCalculService {
       for (var valeurDice in dictValeur) {
         resultat += parseInt(valeurDice) * dictValeur[valeurDice]
       }
-      console.log("Chance")
       type = "Chance"
     }
-    //console.log("Résultat : " + resultat)
 
     return [resultat, type]
   }
