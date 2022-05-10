@@ -4,8 +4,8 @@ Ce Projet est le Jeu de Yam's développer avec le Framework Angular.
 
 ## Créateur
 
--> Sylvain Caron
--> Florian Chanchus
+- Sylvain Caron
+- Florian Chanchus
 
 ## Informations
 
@@ -16,19 +16,19 @@ Ce Projet est le Jeu de Yam's développer avec le Framework Angular.
 
 Les Joueurs peuvent :
 
--> Inscrire leur nom
--> Lire les règles (Bouton)
--> Changer de tour (Bouton)
--> Lancer les dès (Bouton)
--> Bloquer/Débloquer des dès (Bouton)
+- Inscrire leur nom
+- Lire les règles (Bouton)
+- Changer de tour (Bouton)
+- Lancer les dès (Bouton)
+- Bloquer/Débloquer des dès (Bouton)
 
 Autres fonctionnalités :
 
--> Le nom du joueur en cours s'affiche en haut, ainsi que son score actuel
--> Le tour s'affiche
--> Le score à chaque tour s'inscrit dans le tableau des scores en bas
--> À la fin du jeu, le Gagnant s'affiche à la place du joueur en cours
--> À la fin du jeu, les joueurs ne peuvent plus changer de tour
+- Le nom du joueur en cours s'affiche en haut, ainsi que son score actuel
+- Le tour s'affiche
+- Le score à chaque tour s'inscrit dans le tableau des scores en bas
+- À la fin du jeu, le Gagnant s'affiche à la place du joueur en cours
+- À la fin du jeu, les joueurs ne peuvent plus changer de tour
 
 ## Development server
 
